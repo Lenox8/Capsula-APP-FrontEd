@@ -36,9 +36,10 @@ const Page = () => {
   }) => {
     try {
       const token = Cookies.get("token");
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL
       if (token) {
         const res = await axios.post(
-          "http://localhost:8000/api/criarCapsula",
+          `${apiUrl}/api/criarCapsula`,
           data,
           {
             headers: { Authorization: `Bearer: ${token}` },

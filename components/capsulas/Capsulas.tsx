@@ -31,7 +31,8 @@ const Capsulas = () => {
   useEffect(() => {
     const retornocapsulas = async () => {
       if (token) {
-        const response = await axios.get("http://localhost:8000/api/capsulas", {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL
+        const response = await axios.get(`${apiUrl}/api/capsulas`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCapsulesData(response.data);
@@ -44,8 +45,9 @@ const Capsulas = () => {
     const token = Cookies.get("token");
     if (token) {
       try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL
         const res = await axios.patch(
-          `http://localhost:8000/api/cancelarCapsula/${data.id}`,
+          `${apiUrl}/api/cancelarCapsula/${data.id}`,
           {},
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -74,8 +76,9 @@ const Capsulas = () => {
     const token = Cookies.get("token");
     if (token) {
       try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL
         const reponse = await axios.delete(
-          `http://localhost:8000/api/apagarCapsula/${data.id}`,
+          `${apiUrl}/api/apagarCapsula/${data.id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
