@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 // rotas protegidas
 const protectedRoutes = ["/dashboard", "/profile", "/private"]
-const privadaRouters = ["/login", "/signUp"]
+const privadaRouters = ["/login", "/signUp", "pendentes", "create", "capsulas"]
 
 export default function middleware(req: NextRequest){
     const token = req.cookies.get("token")?.value //pega token do cookie
@@ -28,5 +28,5 @@ export default function middleware(req: NextRequest){
 // definir em quais rotas o middleware atua
 
 export const config = {
-    matcher: ["/dashboard/:path*", "/profile/:path*", "/private/:path*", "/login", "/signUp", "/homepage/:path*"]
+    matcher: ["/dashboard/:path*", "/profile/:path*", "/private/:path*", "/login/:path*", "/signUp", "/homepage/:path*", "/create/:path*", "/pendentes/:path*", "/capsulas/:path*"]
 }

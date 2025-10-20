@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Cookies from "js-cookie";
-import { Button } from "@/components/ui/button";
 import { Edit, Plus, StopCircle, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import Link from "next/link";
@@ -31,8 +30,8 @@ const Capsulas = () => {
   useEffect(() => {
     const retornocapsulas = async () => {
       if (token) {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL
-        const response = await axios.get(`${apiUrl}/api/capsulas`, {
+        // const apiUrl = process.env.NEXT_PUBLIC_API_URL
+        const response = await axios.get(`http://localhost:8000/api/capsulas`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCapsulesData(response.data);
@@ -45,9 +44,9 @@ const Capsulas = () => {
     const token = Cookies.get("token");
     if (token) {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL
+        // const apiUrl = process.env.NEXT_PUBLIC_API_URL
         const res = await axios.patch(
-          `${apiUrl}/api/cancelarCapsula/${data.id}`,
+          `http://localhost:8000/api/cancelarCapsula/${data.id}`,
           {},
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -76,9 +75,9 @@ const Capsulas = () => {
     const token = Cookies.get("token");
     if (token) {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL
-        const reponse = await axios.delete(
-          `${apiUrl}/api/apagarCapsula/${data.id}`,
+        // const apiUrl = process.env.NEXT_PUBLIC_API_URL
+        const response = await axios.delete(
+          `http://localhost:8000/api/apagarCapsula/${data.id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -101,7 +100,7 @@ const Capsulas = () => {
   return (
     <section>
       <Card
-        className="w-fit max-h-[700px] overflow-y-auto"
+        className="w-[900px] max-h-[900px] lg:w-fit lg:max-h-[700px] overflow-y-auto "
         data-aos="fade-right"
       >
         <CardHeader>
@@ -114,7 +113,6 @@ const Capsulas = () => {
             <thead>
               <tr className="text-left">
                 <th className="border px-4 py-2 select-none">id</th>
-                <th className="border px-4 py-2 select-none">userId</th>
                 <th className="border px-4 py-2 select-none">dataEnvio</th>
                 <th className="border px-4 py-2 select-none">status</th>
                 <th className="border px-4 py-2 select-none">email destinatario</th>
@@ -128,7 +126,6 @@ const Capsulas = () => {
               {capsuleData?.map((item) => (
                 <tr key={item._id}>
                   <td className="border px-4 py-2 select-none">{item._id}</td>
-                  <td className="border px-4 py-2 select-none">{item.userId}</td>
                   <td className="border px-4 py-2 select-none">{item.dataEnvio}</td>
                   <td className="border px-4 py-2 select-none">{item.status}</td>
                   <td className="border px-4 py-2 select-none">{item.emailDestinatario}</td>

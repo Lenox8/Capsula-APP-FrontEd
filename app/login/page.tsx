@@ -42,10 +42,9 @@ const Page = () => {
     password: string;
   }) => {
     try {
-       const apiUrl = process.env.NEXT_PUBLIC_API_URL
+       
       const response = await axios.post(
-        `${apiUrl}api/login`,
-        data,
+        `http://localhost:8000/api/login`, data,  
         {
           headers: { "Content-Type": "application/json" },
         }

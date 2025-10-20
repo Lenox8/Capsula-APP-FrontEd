@@ -42,9 +42,8 @@ const Page = () => {
     password: string;
   }) => {
     try {
-       const apiUrl = process.env.NEXT_PUBLIC_API_URL
       const response = await axios.post(
-        `${apiUrl}/api/cadastrar`,
+        'http://localhost:8000//api/cadastrar',
         data,
         {
           headers: { "Content-Type": "application/json" },

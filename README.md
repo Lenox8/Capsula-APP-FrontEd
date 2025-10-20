@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Cápsula do Tempo — Frontend (Next.js)
 
-## Getting Started
+Este é o **frontend** do projeto **Cápsula do Tempo**, uma aplicação web que permite aos usuários criarem, armazenarem e receberem mensagens no futuro — uma “cápsula do tempo digital”.
 
-First, run the development server:
+---
+
+## 🚀 Tecnologias Utilizadas
+
+* **Next.js 15 (com Turbopack)** — Framework React moderno para aplicações web rápidas.
+* **React 19** — Biblioteca principal para construção da interface.
+* **Tailwind CSS 4** — Estilização rápida e responsiva.
+* **AOS** — Animações suaves e modernas.
+* **Shadcn UI** — Componentes acessíveis e personalizáveis.
+* **Axios / SWR** — Comunicação com o backend.
+* **React Hook Form + Zod** — Validação e controle de formulários.
+* **Next-Themes** — Suporte a temas claro/escuro.
+* **React Hot Toast / NextJS Toast Notify** — Notificações interativas.
+
+---
+
+## ⚙️ Requisitos
+
+Antes de iniciar o projeto, assegure-se de ter instalados:
+
+* **Node.js** (versão 20 ou superior)
+* **npm** (gerenciador de pacotes)
+* **Docker** (para rodar a aplicação em container, opcional)
+
+---
+
+## 💻 Rodando Localmente
+
+### 1️⃣ Clone o repositório
+
+```bash
+git clone https://github.com/Lenox8/Capsula-APP-FrontEd
+cd diretorio
+```
+
+### 2️⃣ Instale as dependências
+
+```bash
+npm install
+```
+
+### 3️⃣ Configure variáveis de ambiente
+
+Crie um arquivo `.env.local` na raiz e adicione:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+### 4️⃣ Execute o projeto em modo desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse em:
+👉 **[http://localhost:3000](http://localhost:3000)**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🐳 Rodando com Docker
 
-## Learn More
+### 1️⃣ Build da imagem
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker build -t capsula-frontend .
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2️⃣ Executar o container
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+docker run -d -p 3000:3000 capsula-frontend
+```
 
-## Deploy on Vercel
+O aplicativo estará disponível em:
+👉 **[http://localhost:3000](http://localhost:3000)**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Estrutura do Projeto
+
+```
+client/
+│
+├── app/                # Estrutura de páginas e rotas Next.js
+├── components/         # Componentes reutilizáveis
+├── hooks/              # Custom hooks
+├── public/             # Imagens e assets estáticos
+├── styles/             # Configuração do Tailwind CSS
+├── utils/              # Funções auxiliares
+└── package.json        # Configuração de dependências
+```
+
+---
+
+##  Scripts Principais
+
+| Comando         | Descrição                           |
+| --------------- | ----------------------------------- |
+| `npm run dev`   | Executa em modo de desenvolvimento  |
+| `npm run build` | Compila a aplicação para produção   |
+| `npm start`     | Inicia o servidor de produção       |
+| `npm run lint`  | Verifica erros de linting no código |
+
+---
+
+## 🧱 Dockerfile (Resumo)
+
+O projeto utiliza **build multi-stage** para otimização:
+
+1️⃣ **Builder Stage:** instala dependências e compila o projeto.
+2️⃣ **Runner Stage:** roda a aplicação final em ambiente leve (Node Alpine).
+
+---
+
+## ✨ Funcionalidades Principais
+
+* Autenticação de usuário (login/cadastro)
+* Criação e edição de cápsulas
+* Listagem de cápsulas pendentes
+* Envio automático via backend
+* Interface moderna e responsiva
+
+---
+
+## 👨‍💻 Desenvolvido por
+
+**Lenox Mucumbi**
+Licenciatura em Ensino de Programação Informática
+📍 *Instituto Superior Dom Bosco, 2025*
+
+**Nota: copie o file docker.componse para o mesmo diretorio raiz das pastas frontend e backend**

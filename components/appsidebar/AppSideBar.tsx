@@ -53,7 +53,7 @@ const items = [
   },
   {
     title: "Pendentes",
-    url: "/capsulas/pendentes",
+    url: "/dashboard/pendentes",
     icon: Clock,
   },
   {
